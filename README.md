@@ -1,7 +1,7 @@
 # mqtt-web-broadcast
 Broadcast data to multiple client
 
-Broadcast data from server to multiple clients (like browser), backed by NATS server. Useful for stuff like server sent event. Originally written for realtime web application.
+Broadcast data from server to multiple clients (like browser), backed by NATS server. Useful for stuff like server sent event. Originally written for ~~me to learn nodejs~~ realtime web application.
 
 #### What is NATS server
 NATS server is high-performance, lightweight topic based PUB-SUB broker. Kind of Kafka without persistence and queuing, or like MQTT without QOS 1 and QOS 2 semantic
