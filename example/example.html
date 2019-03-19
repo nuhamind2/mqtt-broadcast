@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script>
+        
+        var client= mqtt.connect('ws://localhost:9002')
+        console.log(window)
+        client.on("connect",function(){      
+            document.getElementById("status").innerText = "connected"
+        })
+        client.on("close",function(){
+            document.getElementById("status").innerText = "disconnected"
+        })
+        client.on("reconnect",function(){
+            document.getElementById("status").innerText = "reconecting..."
+        })
+        client.subscribe("topic1",{},function(){
+            console.log("subscribed")
+        })
+        client.handleMessage = function(pkt,done){            
+            let view = new DataView(pkt.payload.buffer,pkt.payload.byteOffset,pkt.payload.length)
+            document.getElementById("status").innerText = view.getUint32(0,true)
+            done()
+        }
+    </script>
+
+<h1><a href="https://github.com/nuhamind2/mqtt-web-broadcast">mqtt-web-broadcast</a> demo</h1>
+Status : <span id="status"></span>
+<p id="data"></p>
+
+</body>
+</html> 
