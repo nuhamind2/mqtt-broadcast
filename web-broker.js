@@ -82,7 +82,8 @@ var nc = function () {
         return nats.connect({
             url: `nats://${config.nats.host}:${config.nats.port}`,
             maxReconnectAttempts: -1,
-            name: scriptname
+            name: scriptname,
+            preserveBuffers: true
         })
     }
     catch{
@@ -130,6 +131,7 @@ var mqtt = new umqtt({
 })
 
 function onMessage(subscriber, topic, msg) {
+    console.log(msg)
     async.each(subscriber, function (client, done) {
         const mqttmsg = { topic: topic, payload: msg }
         mqtt.publish(client, mqttmsg)
