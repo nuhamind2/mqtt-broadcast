@@ -1,4 +1,5 @@
-Install NATS server from [nats release page](https://github.com/nats-io/gnatsd/releases), then start it.
+Install NATS server from [nats release page](https://github.com/nats-io/gnatsd/releases), then start it with :
+
 `gnatsd -DV`
 
 -DV is flag to enable debug and trace message, usefull for testing. By default NATS server will listen on port 4222
