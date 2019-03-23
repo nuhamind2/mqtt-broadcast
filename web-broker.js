@@ -2,11 +2,18 @@
 const yaml = require('js-yaml');
 const path = require('path');
 const fs = require('fs');
-const ymlPath = 'web-broker.yml'
 var async = require("async");
 
 var scriptname = path.basename(process.argv[1])
 console.log(`Script name : ${scriptname}`)
+var ymlPath
+
+if(process.argv[2]){
+    ymlPath = process.argv[2]
+}
+else{
+    ymlPath = 'web-broker.yml'
+}
 
 //Load configuration file
 const rawConfig = function () {
