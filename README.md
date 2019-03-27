@@ -12,6 +12,12 @@ Client(s) send subscription request toward mqtt-web-broadcast which then transla
 #### Client protocol
 mqtt-web-broadcast use MQTT (obviously) for client protocol but do not perform topic matching by itself. Client to client communication is impossible unlike regular mqtt broker. Published message from client is ignored. Browser client may use websocket but it is also support plain TCP transport.
 
+#### Architecture
+See docs/assets/
+
+#### Example
+See example/
+
 
 
 
