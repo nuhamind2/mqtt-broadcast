@@ -138,7 +138,6 @@ var mqtt = new umqtt({
 })
 
 function onMessage(subscriber, topic, msg) {
-    console.log(msg)
     async.each(subscriber, function (client, done) {
         const mqttmsg = { topic: topic, payload: msg }
         mqtt.publish(client, mqttmsg)
