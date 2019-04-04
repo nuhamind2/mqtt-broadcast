@@ -18,6 +18,11 @@ See docs/assets/
 #### Example
 See example/
 
+### Similar (and better) project
+These program below can be used to implement server sent event (and probably better than this application)
+- [centrifugo](https://github.com/centrifugal/centrifugo)
+- [resgate](https://github.com/jirenius/resgate)
+
 
 
 
