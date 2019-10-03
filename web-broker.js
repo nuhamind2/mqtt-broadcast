@@ -30,7 +30,7 @@ const rawConfig = function () {
 }.call()
 
 //verify config
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const schema = Joi.object().keys({
     mqtt: Joi.object().keys({
         protocol: Joi.string().required().valid("tcp", "tls", "ws", "wss"),
@@ -58,16 +58,14 @@ const schema = Joi.object().keys({
 
 })
 
-var config
-Joi.validate(rawConfig, schema, function (err, value) {
-    if (err) {
-        console.log("Invalid config")
-        console.log(err)
-        process.exit()
-    }
-    config = value
+const {error,value} = schema.validate(rawConfig)
+if(error){
+    console.log(error.toString())
+    process.exit(1)
+}
 
-})
+var config = value
+
 const stringifyObject = require('stringify-object');
 console.log(stringifyObject(config))
 var subscribe_mapping = eval(config.nats.subscribe_mapping)
